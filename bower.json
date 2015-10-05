@@ -1,6 +1,6 @@
 {
   "name": "angular-strap-lightbox",
-  "version": "0.9.0",
+  "version": "1.0.0",
   "main": [
     "dist/angular-strap-lightbox.js",
     "dist/angular-strap-lightbox.css"
