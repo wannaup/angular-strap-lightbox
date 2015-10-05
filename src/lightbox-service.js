@@ -255,14 +255,11 @@ angular.module('ngStrapLightbox').provider('Lightbox', function () {
       Lightbox.images = newImages;
       Lightbox.setImage(newIndex);
 
+      $scope.Lightbox = Lightbox;
+      Lightbox.keyboardNavEnabled = true;
       Lightbox.modalInstance = $modal(angular.extend({
         templateUrl: Lightbox.templateUrl,
-        controller: ['$scope', function ($scope) {
-          // $scope is the modal scope, a child of $rootScope
-          $scope.Lightbox = Lightbox;
-
-          Lightbox.keyboardNavEnabled = true;
-        }]
+        scope: $scope
       }, modalParams || {}));
 
       // modal close handler
