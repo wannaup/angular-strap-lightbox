@@ -2,7 +2,8 @@
  * @namespace ngStrapLightbox
  */
 angular.module('ngStrapLightbox', [
-  'mgcrea.ngStrap.modal'
+  'mgcrea.ngStrap.modal',
+  'pascalprecht.translate'
 ]);
 
 // optional dependencies
@@ -24,7 +25,7 @@ angular.module('ngStrapLightbox').run(['$templateCache', function($templateCache
   'use strict';
 
   $templateCache.put('lightbox.html',
-    "<div class=modal tabindex=-1 role=dialog aria-hidden=true><div class=modal-dialog><div class=modal-content><div class=modal-body ng-swipe-left=Lightbox.nextImage() ng-swipe-right=Lightbox.prevImage()><div class=lightbox-nav><button class=close aria-hidden=true ng-click=$hide()>×</button><div class=btn-group><a class=\"btn btn-xs btn-default\" ng-click=Lightbox.prevImage()>‹ Previous</a> <a ng-href={{Lightbox.imageUrl}} target=_blank class=\"btn btn-xs btn-default\" title=\"Open in new tab\">Open image in new tab</a> <a class=\"btn btn-xs btn-default\" ng-click=Lightbox.nextImage()>Next ›</a></div></div><div class=lightbox-image-container><div class=lightbox-image-caption><span>{{Lightbox.imageCaption}}</span></div><img ng-if=!Lightbox.isVideo(Lightbox.image) lightbox-src={{Lightbox.imageUrl}}><div ng-if=Lightbox.isVideo(Lightbox.image) class=\"embed-responsive embed-responsive-16by9\"><video ng-if=!Lightbox.isSharedVideo(Lightbox.image) lightbox-src={{Lightbox.imageUrl}} controls autoplay></video><embed-video ng-if=Lightbox.isSharedVideo(Lightbox.image) lightbox-src={{Lightbox.imageUrl}} ng-href={{Lightbox.imageUrl}} iframe-id=lightbox-video class=embed-responsive-item><a ng-href={{Lightbox.imageUrl}}>Watch video</a></embed-video></div></div></div></div></div></div>"
+    "<div class=modal tabindex=-1 role=dialog aria-hidden=true><div class=modal-dialog><div class=modal-content><div class=modal-body ng-swipe-left=Lightbox.nextImage() ng-swipe-right=Lightbox.prevImage()><div class=lightbox-nav><button class=close aria-hidden=true ng-click=$hide()>×</button><div class=btn-group><a class=\"btn btn-xs btn-default\" ng-click=Lightbox.prevImage()>{{'lightbox.previous' | translate}}</a> <a ng-href={{Lightbox.imageUrl}} target=_blank class=\"btn btn-xs btn-default\" title=\"Open in new tab\">{{'lightbox.openInNewTab' | translate}}</a> <a class=\"btn btn-xs btn-default\" ng-click=Lightbox.nextImage()>{{'lightbox.next' | translate}}</a></div></div><div class=lightbox-image-container><div class=lightbox-image-caption><span>{{Lightbox.imageCaption}}</span></div><img ng-if=!Lightbox.isVideo(Lightbox.image) lightbox-src={{Lightbox.imageUrl}}><div ng-if=Lightbox.isVideo(Lightbox.image) class=\"embed-responsive embed-responsive-16by9\"><video ng-if=!Lightbox.isSharedVideo(Lightbox.image) lightbox-src={{Lightbox.imageUrl}} controls autoplay></video><embed-video ng-if=Lightbox.isSharedVideo(Lightbox.image) lightbox-src={{Lightbox.imageUrl}} ng-href={{Lightbox.imageUrl}} iframe-id=lightbox-video class=embed-responsive-item><a ng-href={{Lightbox.imageUrl}}>{{'lightbox.watchVideo' | translate}}</a></embed-video></div></div></div></div></div></div>"
   );
 
 }]);
@@ -331,7 +332,7 @@ angular.module('ngStrapLightbox').provider('Lightbox', function () {
       $scope.Lightbox = Lightbox;
       Lightbox.keyboardNavEnabled = true;
       Lightbox.modalInstance = $modal(angular.extend({
-        templateUrl: Lightbox.templateUrl,
+        template: Lightbox.templateUrl,
         scope: $scope
       }, modalParams || {}));
 

@@ -2,7 +2,8 @@
  * @namespace ngStrapLightbox
  */
 angular.module('ngStrapLightbox', [
-  'mgcrea.ngStrap.modal'
+  'mgcrea.ngStrap.modal',
+  'pascalprecht.translate'
 ]);
 
 // optional dependencies

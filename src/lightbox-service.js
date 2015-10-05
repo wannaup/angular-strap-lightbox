@@ -258,7 +258,7 @@ angular.module('ngStrapLightbox').provider('Lightbox', function () {
       $scope.Lightbox = Lightbox;
       Lightbox.keyboardNavEnabled = true;
       Lightbox.modalInstance = $modal(angular.extend({
-        templateUrl: Lightbox.templateUrl,
+        template: Lightbox.templateUrl,
         scope: $scope
       }, modalParams || {}));
 

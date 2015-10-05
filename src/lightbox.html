@@ -11,16 +11,16 @@
 
           <div class="btn-group">
             <a class="btn btn-xs btn-default" ng-click="Lightbox.prevImage()">
-              ‹ Previous
+              {{'lightbox.previous' | translate}}
             </a>
 
             <a ng-href="{{Lightbox.imageUrl}}" target="_blank"
                class="btn btn-xs btn-default" title="Open in new tab">
-              Open image in new tab
+              {{'lightbox.openInNewTab' | translate}}
             </a>
 
             <a class="btn btn-xs btn-default" ng-click="Lightbox.nextImage()">
-              Next ›
+              {{'lightbox.next' | translate}}
             </a>
           </div>
         </div>
@@ -52,7 +52,7 @@
                          ng-href="{{Lightbox.imageUrl}}"
                          iframe-id="lightbox-video"
                          class="embed-responsive-item">
-              <a ng-href="{{Lightbox.imageUrl}}">Watch video</a>
+              <a ng-href="{{Lightbox.imageUrl}}">{{'lightbox.watchVideo' | translate}}</a>
             </embed-video>
           </div>
         </div>

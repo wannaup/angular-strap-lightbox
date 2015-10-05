@@ -13,7 +13,8 @@
   ],
   "dependencies": {
     "angular": "^1.4.6",
-    "angular-strap": "^2.3.2"
+    "angular-strap": "^2.3.2",
+    "angular-translate": "2.2.0"
   },
   "devDependencies": {
     "angular-loading-bar": "^0.8.0",
