@@ -12,8 +12,8 @@
     "package.json"
   ],
   "dependencies": {
-    "angular": "^1.4.5",
-    "angular-bootstrap": "^0.13.4"
+    "angular": "^1.4.6",
+    "angular-strap": "^2.3.2"
   },
   "devDependencies": {
     "angular-loading-bar": "^0.8.0",

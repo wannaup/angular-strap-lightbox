@@ -69,7 +69,7 @@ module.exports = function (grunt) {
       }
     },
     ngtemplates: {
-      'bootstrapLightbox': {
+      'ngStrapLightbox': {
         cwd: 'src',
         src: '*.html',
         dest: '.tmp/templates.js',
@@ -90,7 +90,7 @@ module.exports = function (grunt) {
         src: 'src/*.js',
         dest: 'api.md'
       }
-    },
+    }
   });
 
   grunt.registerTask('default', [

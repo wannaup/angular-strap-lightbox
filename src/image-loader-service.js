@@ -1,9 +1,9 @@
 /**
  * @class     ImageLoader
  * @classdesc Service for loading an image.
- * @memberOf  bootstrapLightbox
+ * @memberOf  ngStrapLightbox
  */
-angular.module('bootstrapLightbox').service('ImageLoader', ['$q',
+angular.module('ngStrapLightbox').service('ImageLoader', ['$q',
     function ($q) {
   /**
    * Load the image at the given URL.
@@ -12,7 +12,7 @@ angular.module('bootstrapLightbox').service('ImageLoader', ['$q',
    *   successfully.
    * @type     {Function}
    * @name     load
-   * @memberOf bootstrapLightbox.ImageLoader
+   * @memberOf ngStrapLightbox.ImageLoader
    */
   this.load = function (url) {
     var deferred = $q.defer();

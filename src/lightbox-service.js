@@ -1,14 +1,14 @@
 /**
  * @class     Lightbox
  * @classdesc Lightbox service.
- * @memberOf  bootstrapLightbox
+ * @memberOf  ngStrapLightbox
  */
-angular.module('bootstrapLightbox').provider('Lightbox', function () {
+angular.module('ngStrapLightbox').provider('Lightbox', function () {
   /**
-   * Template URL passed into `$modal.open()`.
+   * Template URL passed into `$modal()`.
    * @type     {String}
    * @name     templateUrl
-   * @memberOf bootstrapLightbox.Lightbox
+   * @memberOf ngStrapLightbox.Lightbox
    */
   this.templateUrl = 'lightbox.html';
 
@@ -16,7 +16,7 @@ angular.module('bootstrapLightbox').provider('Lightbox', function () {
    * Whether images should be scaled to the maximum possible dimensions.
    * @type     {Boolean}
    * @name     fullScreenMode
-   * @memberOf bootstrapLightbox.Lightbox
+   * @memberOf ngStrapLightbox.Lightbox
    */
   this.fullScreenMode = false;
 
@@ -25,7 +25,7 @@ angular.module('bootstrapLightbox').provider('Lightbox', function () {
    * @return   {String} The URL of the given image.
    * @type     {Function}
    * @name     getImageUrl
-   * @memberOf bootstrapLightbox.Lightbox
+   * @memberOf ngStrapLightbox.Lightbox
    */
   this.getImageUrl = function (image) {
     return typeof image === 'string' ? image : image.url;
@@ -36,7 +36,7 @@ angular.module('bootstrapLightbox').provider('Lightbox', function () {
    * @return   {String} The caption of the given image.
    * @type     {Function}
    * @name     getImageCaption
-   * @memberOf bootstrapLightbox.Lightbox
+   * @memberOf ngStrapLightbox.Lightbox
    */
   this.getImageCaption = function (image) {
     return image.caption;
@@ -52,7 +52,7 @@ angular.module('bootstrapLightbox').provider('Lightbox', function () {
    *   `minHeight`, `maxWidth`, and `maxHeight`.
    * @type     {Function}
    * @name     calculateImageDimensionLimits
-   * @memberOf bootstrapLightbox.Lightbox
+   * @memberOf ngStrapLightbox.Lightbox
    */
   this.calculateImageDimensionLimits = function (dimensions) {
     if (dimensions.windowWidth >= 768) {
@@ -89,7 +89,7 @@ angular.module('bootstrapLightbox').provider('Lightbox', function () {
    * @return   {Object} Must contain the properties `width` and `height`.
    * @type     {Function}
    * @name     calculateModalDimensions
-   * @memberOf bootstrapLightbox.Lightbox
+   * @memberOf ngStrapLightbox.Lightbox
    */
   this.calculateModalDimensions = function (dimensions) {
     // 400px = arbitrary min width
@@ -126,7 +126,7 @@ angular.module('bootstrapLightbox').provider('Lightbox', function () {
    * @return   {Boolean} Whether the provided element is a video.
    * @type     {Function}
    * @name     isVideo
-   * @memberOf bootstrapLightbox.Lightbox
+   * @memberOf ngStrapLightbox.Lightbox
    */
   this.isVideo = function (image) {
     if (typeof image === 'object' && image && image.type) {
@@ -143,7 +143,7 @@ angular.module('bootstrapLightbox').provider('Lightbox', function () {
    *   determined by the url not ending in `.mp4`, `.ogg`, or `.webm`.
    * @type     {Function}
    * @name     isSharedVideo
-   * @memberOf bootstrapLightbox.Lightbox
+   * @memberOf ngStrapLightbox.Lightbox
    */
   this.isSharedVideo = function (image) {
     return this.isVideo(image) &&
@@ -162,7 +162,7 @@ angular.module('bootstrapLightbox').provider('Lightbox', function () {
      * Array of all images to be shown in the lightbox (not `Image` objects).
      * @type     {Array}
      * @name     images
-     * @memberOf bootstrapLightbox.Lightbox
+     * @memberOf ngStrapLightbox.Lightbox
      */
     Lightbox.images = [];
 
@@ -171,7 +171,7 @@ angular.module('bootstrapLightbox').provider('Lightbox', function () {
      *   shown in the lightbox.
      * @type     {Number}
      * @name     index
-     * @memberOf bootstrapLightbox.Lightbox
+     * @memberOf ngStrapLightbox.Lightbox
      */
     Lightbox.index = -1;
 
@@ -191,7 +191,7 @@ angular.module('bootstrapLightbox').provider('Lightbox', function () {
      *   images in the lightbox.
      * @type     {Boolean}
      * @name     keyboardNavEnabled
-     * @memberOf bootstrapLightbox.Lightbox
+     * @memberOf ngStrapLightbox.Lightbox
      */
     Lightbox.keyboardNavEnabled = false;
 
@@ -199,7 +199,7 @@ angular.module('bootstrapLightbox').provider('Lightbox', function () {
      * The image currently shown in the lightbox.
      * @type     {*}
      * @name     image
-     * @memberOf bootstrapLightbox.Lightbox
+     * @memberOf ngStrapLightbox.Lightbox
      */
     Lightbox.image = {};
 
@@ -208,7 +208,7 @@ angular.module('bootstrapLightbox').provider('Lightbox', function () {
      *   http://angular-ui.github.io/bootstrap/#/modal}.
      * @type     {Object}
      * @name     modalInstance
-     * @memberOf bootstrapLightbox.Lightbox
+     * @memberOf ngStrapLightbox.Lightbox
      */
     Lightbox.modalInstance = null;
 
@@ -219,26 +219,27 @@ angular.module('bootstrapLightbox').provider('Lightbox', function () {
      *   objects.
      * @type     {String}
      * @name     imageUrl
-     * @memberOf bootstrapLightbox.Lightbox
+     * @memberOf ngStrapLightbox.Lightbox
      */
 
     /**
      * The optional caption of the current image.
      * @type     {String}
      * @name     imageCaption
-     * @memberOf bootstrapLightbox.Lightbox
+     * @memberOf ngStrapLightbox.Lightbox
      */
 
     /**
      * Whether an image is currently being loaded.
      * @type     {Boolean}
      * @name     loading
-     * @memberOf bootstrapLightbox.Lightbox
+     * @memberOf ngStrapLightbox.Lightbox
      */
     Lightbox.loading = false;
 
     /**
      * Open the lightbox modal.
+     * @param    {Object} $scope the caller scope
      * @param    {Array}  newImages An array of images. Each image may be of
      *   any type.
      * @param    {Number} newIndex  The index in `newImages` to set as the
@@ -248,26 +249,24 @@ angular.module('bootstrapLightbox').provider('Lightbox', function () {
      * @return   {Object} The created UI Bootstrap modal instance.
      * @type     {Function}
      * @name     openModal
-     * @memberOf bootstrapLightbox.Lightbox
+     * @memberOf ngStrapLightbox.Lightbox
      */
-    Lightbox.openModal = function (newImages, newIndex, modalParams) {
+    Lightbox.openModal = function ($scope, newImages, newIndex, modalParams) {
       Lightbox.images = newImages;
       Lightbox.setImage(newIndex);
 
-      // store the modal instance so we can close it manually if we need to
-      Lightbox.modalInstance = $modal.open(angular.extend({
-        'templateUrl': Lightbox.templateUrl,
-        'controller': ['$scope', function ($scope) {
+      Lightbox.modalInstance = $modal(angular.extend({
+        templateUrl: Lightbox.templateUrl,
+        controller: ['$scope', function ($scope) {
           // $scope is the modal scope, a child of $rootScope
           $scope.Lightbox = Lightbox;
 
           Lightbox.keyboardNavEnabled = true;
-        }],
-        'windowClass': 'lightbox-modal'
+        }]
       }, modalParams || {}));
 
       // modal close handler
-      Lightbox.modalInstance.result['finally'](function () {
+      $scope.$on('modal.hide',function(){
         // prevent the lightbox from flickering from the old image when it gets
         // opened again
         Lightbox.images = [];
@@ -289,14 +288,12 @@ angular.module('bootstrapLightbox').provider('Lightbox', function () {
 
     /**
      * Close the lightbox modal.
-     * @param    {*} result This argument can be useful if the modal promise
-     *   gets handler(s) attached to it.
      * @type     {Function}
      * @name     closeModal
-     * @memberOf bootstrapLightbox.Lightbox
+     * @memberOf ngStrapLightbox.Lightbox
      */
-    Lightbox.closeModal = function (result) {
-      return Lightbox.modalInstance.close(result);
+    Lightbox.closeModal = function () {
+      return Lightbox.modalInstance.hide();
     };
 
     /**
@@ -306,7 +303,7 @@ angular.module('bootstrapLightbox').provider('Lightbox', function () {
      *   the new current image.
      * @type     {Function}
      * @name     setImage
-     * @memberOf bootstrapLightbox.Lightbox
+     * @memberOf ngStrapLightbox.Lightbox
      */
     Lightbox.setImage = function (newIndex) {
       if (!(newIndex in Lightbox.images)) {
@@ -360,7 +357,7 @@ angular.module('bootstrapLightbox').provider('Lightbox', function () {
      * Navigate to the first image.
      * @type     {Function}
      * @name     firstImage
-     * @memberOf bootstrapLightbox.Lightbox
+     * @memberOf ngStrapLightbox.Lightbox
      */
     Lightbox.firstImage = function () {
       Lightbox.setImage(0);
@@ -370,7 +367,7 @@ angular.module('bootstrapLightbox').provider('Lightbox', function () {
      * Navigate to the previous image.
      * @type     {Function}
      * @name     prevImage
-     * @memberOf bootstrapLightbox.Lightbox
+     * @memberOf ngStrapLightbox.Lightbox
      */
     Lightbox.prevImage = function () {
       Lightbox.setImage((Lightbox.index - 1 + Lightbox.images.length) %
@@ -381,7 +378,7 @@ angular.module('bootstrapLightbox').provider('Lightbox', function () {
      * Navigate to the next image.
      * @type     {Function}
      * @name     nextImage
-     * @memberOf bootstrapLightbox.Lightbox
+     * @memberOf ngStrapLightbox.Lightbox
      */
     Lightbox.nextImage = function () {
       Lightbox.setImage((Lightbox.index + 1) % Lightbox.images.length);
@@ -391,7 +388,7 @@ angular.module('bootstrapLightbox').provider('Lightbox', function () {
      * Navigate to the last image.
      * @type     {Function}
      * @name     lastImage
-     * @memberOf bootstrapLightbox.Lightbox
+     * @memberOf ngStrapLightbox.Lightbox
      */
     Lightbox.lastImage = function () {
       Lightbox.setImage(Lightbox.images.length - 1);
@@ -405,7 +402,7 @@ angular.module('bootstrapLightbox').provider('Lightbox', function () {
      * @param {Array} newImages The new array of images.
      * @type     {Function}
      * @name     setImages
-     * @memberOf bootstrapLightbox.Lightbox
+     * @memberOf ngStrapLightbox.Lightbox
      */
     Lightbox.setImages = function (newImages) {
       Lightbox.images = newImages;

@@ -3,9 +3,9 @@
  * @classdesc This attribute directive is used in an `<img>` element in the
  *   modal template in place of `src`. It handles resizing both the `<img>`
  *   element and its relevant parent elements within the modal.
- * @memberOf  bootstrapLightbox
+ * @memberOf  ngStrapLightbox
  */
-angular.module('bootstrapLightbox').directive('lightboxSrc', ['$window',
+angular.module('ngStrapLightbox').directive('lightboxSrc', ['$window',
     'ImageLoader', 'Lightbox', function ($window, ImageLoader, Lightbox) {
   // Calculate the dimensions to display the image. The max dimensions override
   // the min dimensions if they conflict.
@@ -107,7 +107,7 @@ angular.module('bootstrapLightbox').directive('lightboxSrc', ['$window',
             'minWidth': 1,
             'minHeight': 1,
             'maxWidth': 3000,
-            'maxHeight': 3000,
+            'maxHeight': 3000
           }, imageDimensionLimits),
           Lightbox.fullScreenMode
         );
