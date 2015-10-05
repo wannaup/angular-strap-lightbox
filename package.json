@@ -1,7 +1,7 @@
 {
   "name": "angular-bootstrap-lightbox",
   "version": "0.9.0",
-  "description": "An AngularJS lightbox built using UI Bootstrap Modal.",
+  "description": "An AngularJS lightbox built using Angular Strap Modal.",
   "keywords": [
     "angular",
     "lightbox",
@@ -11,9 +11,9 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git://github.com/compact/angular-bootstrap-lightbox.git"
+    "url": "git://github.com/akosbordas/angular-strap-lightbox.git"
   },
-  "homepage": "http://compact.github.io/angular-bootstrap-lightbox/",
+  "homepage": "http://akosbordas.github.io/angular-strap-lightbox/",
   "dependencies": {},
   "devDependencies": {
     "grunt": "^0.4.5",
