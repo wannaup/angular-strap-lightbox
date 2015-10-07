@@ -95,12 +95,12 @@ angular.module('ngStrapLightbox').provider('Lightbox', function () {
     // 400px = arbitrary min width
     // 32px = 2 * (1px border of .modal-content
     //             + 15px padding of .modal-body)
-    var width = Math.max(400, dimensions.imageDisplayWidth + 32);
+    var width = Math.max(600, dimensions.imageDisplayWidth + 32);
 
     // 200px = arbitrary min height
     // 66px = 32px as above
     //        + 34px outer height of .lightbox-nav
-    var height = Math.max(200, dimensions.imageDisplayHeight + 66);
+    var height = Math.max(600, dimensions.imageDisplayHeight + 66);
 
     // first case:  the modal width cannot be larger than the window width
     //              20px = arbitrary value larger than the vertical scrollbar

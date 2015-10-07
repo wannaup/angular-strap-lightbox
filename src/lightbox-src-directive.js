@@ -129,7 +129,7 @@ angular.module('ngStrapLightbox').directive('lightboxSrc', ['$window',
         // setting the height on .modal-dialog does not expand the div with the
         // background, which is .modal-content
         angular.element(
-          document.querySelector('.lightbox-modal .modal-dialog')
+          document.querySelector('.modal-dialog')
         ).css({
           'width': modalDimensions.width + 'px'
         });
@@ -138,7 +138,7 @@ angular.module('ngStrapLightbox').directive('lightboxSrc', ['$window',
         // .modal-content and not on .modal-dialog, .modal-dialog retains its
         // default width of 600px and that places .modal-content off center
         angular.element(
-          document.querySelector('.lightbox-modal .modal-content')
+          document.querySelector('.modal-content')
         ).css({
           'height': modalDimensions.height + 'px'
         });
